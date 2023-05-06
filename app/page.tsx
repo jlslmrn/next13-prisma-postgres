@@ -41,11 +41,11 @@ export const metadata = {
 export default async function Home() {
   const restaurants = await fetchRestaurants();
 
-  console.log("-----IM IN THE DEFAULT HOME PAGE");
-  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-  console.log(secret, "------ @HOME PAGE!!!");
-  const testing = process.env.TEST_VARIABLE;
-  console.log(testing, "------ @TESTING PAGE!!!");
+  // console.log("-----IM IN THE DEFAULT HOME PAGE");
+  // const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+  // console.log(secret, "------ @HOME PAGE!!!");
+  // const testing = process.env.TEST_VARIABLE;
+  // console.log(testing, "------ @TESTING PAGE!!!");
   return (
     <main>
       <Header />
