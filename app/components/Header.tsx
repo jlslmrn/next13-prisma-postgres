@@ -7,10 +7,8 @@ export default function Header() {
       <div className="text-center mt-10">
         <h1 className="text-white text-5xl font-bold mb-2">
           Find your table for any occasion
-        </h1>
-        {/* SEARCH BAR */}
-        <SearchBar />
-        {/* SEARCH BAR */}
+        </h1>        
+        <SearchBar />        
       </div>
     </div>
   );
