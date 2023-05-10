@@ -16,7 +16,7 @@ export async function GET(req: Request, res: NextResponse) {
       { status: 401 }
     );
   }
-  const token = bearerToken.split(" ")[1];
+  const token = bearerToken.split(" ")[1] || "";
 
   const payload = jwt.decode(token) as { email: string };
 

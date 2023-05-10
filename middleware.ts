@@ -3,9 +3,10 @@ import * as jose from "jose";
 import jwt from "jsonwebtoken";
 import next from "next/types";
 
- const JWT_SECRET="ewqhjlelwqh3h2l13($eqweqwdsagdsjlkfdsncva312##$!!#EwqeqdsaRFQARQW3421)"
+ //const JWT_SECRET="ewqhjlelwqh3h2l13($eqweqwdsagdsjlkfdsncva312##$!!#EwqeqdsaRFQARQW3421)"
 
-export async function middleware(req: NextRequest, res: NextResponse) {
+export async function middleware(req: NextRequest) {
+  console.log(process.env.JWT_SECRET, '------ @THIS IS MIDDLEWARE')
   const bearerToken = req.headers.get("authorization") as string;
 
   if (!bearerToken) {
@@ -17,7 +18,7 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     );
   }
 
-  const token = bearerToken.split(" ")[1];
+  const token = bearerToken.split(" ")[1] || "";
 
   if (!token) {
     return NextResponse.json(
@@ -28,7 +29,7 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     );
   }
 
-  const secret = new TextEncoder().encode(JWT_SECRET);
+  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
   try {
     await jose.jwtVerify(token, secret);
