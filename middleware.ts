@@ -6,7 +6,7 @@ import next from "next/types";
  //const JWT_SECRET="ewqhjlelwqh3h2l13($eqweqwdsagdsjlkfdsncva312##$!!#EwqeqdsaRFQARQW3421)"
 
 export async function middleware(req: NextRequest) {
-  console.log(process.env.JWT_SECRET, '------ @THIS IS MIDDLEWARE')
+  console.log(process.env.NEXT_PUBLIC_JWT_SECRET, '------ @THIS IS MIDDLEWARE')
   const bearerToken = req.headers.get("authorization") as string;
 
   if (!bearerToken) {
@@ -29,7 +29,7 @@ export async function middleware(req: NextRequest) {
     );
   }
 
-  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+  const secret = new TextEncoder()?.encode(process.env.NEXT_PUBLIC_JWT_SECRET);
 
   try {
     await jose.jwtVerify(token, secret);

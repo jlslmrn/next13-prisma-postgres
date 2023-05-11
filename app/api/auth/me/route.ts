@@ -20,7 +20,7 @@ export async function GET(req: Request, res: NextResponse) {
 
   const payload = jwt.decode(token) as { email: string };
 
-  console.log('---- @SUCCESSFUL AUTHENTICATION');
+  console.log("---- @SUCCESSFUL AUTHENTICATION");
 
   if (!payload.email) {
     return NextResponse.json(
@@ -45,11 +45,26 @@ export async function GET(req: Request, res: NextResponse) {
     },
   });
 
-  console.log('---- @DATA RETRIEVED SUCCESSFULLY');
+  if (!user) {
+    return NextResponse.json(
+      {
+        errorMessage: "User not found",
+      },
+      {
+        status: 401,
+      }
+    );
+  }
+
+  console.log("---- @DATA RETRIEVED SUCCESSFULLY");
 
   return NextResponse.json(
     {
-      user: user,
+      id: user.id,
+      firstName: user.first_name,
+      lastName: user.last_name,
+      phone: user.phone,
+      city: user.city,
     },
     {
       status: 200,

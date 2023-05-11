@@ -95,7 +95,7 @@ export async function POST(req: Request, res: NextResponse) {
 
   const alg = "HS256";
 
-  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+  const secret = new TextEncoder()?.encode(process.env.NEXT_PUBLIC_JWT_SECRET);
 
   const token = await new jose.SignJWT({ email: user.email })
     .setProtectedHeader({ alg })
