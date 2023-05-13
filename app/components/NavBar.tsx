@@ -17,7 +17,7 @@ export default function NavBar() {
         OpenTable{" "}
       </Link>
       <div>
-        {loading ? null : (
+        {/* {loading ? null : (
           <div className="flex">
             {data ? (
               <button
@@ -33,11 +33,11 @@ export default function NavBar() {
               </>
             )}
           </div>
-        )}
-        {/* <div className="flex">
+        )} */}
+        <div className="flex">
           <AuthModal isSignin={true} />
           <AuthModal isSignin={false} />
-        </div> */}
+        </div>
       </div>
     </nav>
   );

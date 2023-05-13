@@ -37,7 +37,7 @@ export default function AuthContext({
   children: React.ReactNode;
 }) {
   const [authState, setAuthState] = useState<State>({
-    loading: true,
+    loading: false,
     data: null,
     error: null,
   });
@@ -62,7 +62,7 @@ export default function AuthContext({
 
       console.log(jwt, "---- @this is jWT!!!");
 
-      const response = await axios.get("http://localhost:3000/api/auth/me", {
+      const response = await axios.get("/api/auth/me", {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
@@ -84,9 +84,9 @@ export default function AuthContext({
     }
   };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
 
   return (
     <AuthenticationContext.Provider value={{ ...authState, setAuthState }}>
